@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar color = "success">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Voted Loan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let items of formData">
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            Name: 
+          </ion-col>
+          <ion-col style="color: #ffaa00; font-weight: 500;">
+            {{items.firstName}} {{items.lastName}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="color: #555; font-weight: 300;">
+            Loan Amount:
+          </ion-col>
+          <ion-col style="color: #ffaa00; font-weight: 500;">
+            Tsh.{{items.loanAmount | number}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="color: #555; font-weight: 300;">
+            Loan Category:
+          </ion-col>
+          <ion-col style="color: #6e4a02; font-weight: 500;">
+            {{items.loanType}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="color: #555; font-weight: 300;">
+            Requested Date:
+          </ion-col>
+          <ion-col style="color: #ffaa00; font-weight: 500;">
+            {{items.submitedDate | date }}
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col style="color: #555; font-weight: 300;">
+            Accepted Members:
+          </ion-col>
+          <ion-col style="color: #ffaa00; font-weight: 500;">
+            {{items.yesVote}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="color: #555; font-weight: 300;">
+            Rejected Members:
+          </ion-col>
+          <ion-col style="color: #ffaa00; font-weight: 500;">
+            {{items.noVote}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <hr>
+      <ion-grid>
+        <ion-row>
+            <ion-col>
+                    <ion-button (click) = "rejectLoan(items.formId)" style="height: 40px" color = "danger">Reject</ion-button>
+            </ion-col>
+            <ion-col>
+                    <ion-button  (click) = "acceptLoan(items.formId)" style="height: 40px; float: right;" color = "success">Approve</ion-button>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+        </ion-card-content>
+   </ion-card>
+   <ion-card *ngIf="showNoData">
+    <ion-card-header>
+
+    </ion-card-header>
+    <ion-card-content>
+         <h1>No data to Display...</h1>
+    </ion-card-content>
+   </ion-card>
+</ion-content>

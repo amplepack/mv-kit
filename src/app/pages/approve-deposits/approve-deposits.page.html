@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+         <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Approve Deposits</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let items of formData">
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            Name: 
+          </ion-col>
+          <ion-col style="color: #ffaa00; font-weight: 500;">
+            {{items.firstName}} {{items.lastName}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="color: #555; font-weight: 300;">
+            Loan Amount:
+          </ion-col>
+          <ion-col style="color: #ffaa00; font-weight: 500;">
+            Tsh.{{items.feeAmount | number}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="color: #555; font-weight: 300;">
+            Loan Category:
+          </ion-col>
+          <ion-col style="color: #6e4a02; font-weight: 500;">
+            {{items.feeType}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="color: #555; font-weight: 300;">
+            Depositing Date:
+          </ion-col>
+          <ion-col style="color: #ffaa00; font-weight: 500;">
+            {{items.paymentDate | date }}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <hr>
+      <ion-grid>
+        <ion-row>
+            <ion-col>
+                    <ion-button (click) = "rejectDeposit(items.feeDepositId)" style="height: 40px" color = "danger">Reject</ion-button>
+            </ion-col>
+            <ion-col>
+                    <ion-button  (click) = "acceptDeposit(items.feeDepositId)" style="height: 40px; float: right;" color = "success">Approve</ion-button>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+        </ion-card-content>
+   </ion-card>
+   <ion-card *ngIf="showNoData">
+    <ion-card-header>
+
+    </ion-card-header>
+    <ion-card-content>
+         <h1>No data to Display...</h1>
+    </ion-card-content>
+   </ion-card>
+</ion-content>

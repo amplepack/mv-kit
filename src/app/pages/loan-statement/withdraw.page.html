@@ -1,0 +1,115 @@
+<ion-header>
+    <ion-toolbar color = "success">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons> 
+             <ion-title>Loan Statement</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+     <ion-card>
+       <ion-card-header>
+         <ion-card-title style="color: #E9932B;">Normal Loan</ion-card-title>
+       </ion-card-header>
+       <ion-card-content>
+             <ion-grid>
+               <ion-row>
+                <ion-col style="font-size: 10px;">
+                  Total Loan
+                </ion-col>
+
+                <ion-col style="text-align: right; color: #000000;font-size:12px">
+                 Tsh {{normalLoan?.totalLoan |number}}
+               </ion-col>
+              </ion-row>
+                <hr>
+              <ion-row>
+                <ion-col style="font-size: 10px;">
+                  Amount Paid
+                </ion-col>
+
+                <ion-col style="text-align: right; color: #000000;font-size:12px">
+                 Tsh {{normalLoan?.paid |number}}
+               </ion-col>
+              </ion-row>
+                 <hr>
+              <ion-row>
+                <ion-col style="font-size: 10px;">
+                  OutStanding Loan
+                </ion-col>
+
+                <ion-col style="text-align: right; color: #000000;font-size:12px">
+                 Tsh {{normalLoan?.remainingLoan < 0 ? 0 : normalLoan?.remainingLoan |number}}
+               </ion-col>
+              </ion-row>
+                  <hr>
+              <ion-row>
+                <ion-col style="font-size: 10px;">
+                  Next Repayment Date
+                </ion-col>
+
+                <ion-col style="text-align: right; color: #000000;font-size:12px">
+                 {{normalLoan?.nextRepay | date}}
+               </ion-col>
+              </ion-row>
+              <hr>
+             </ion-grid>
+       </ion-card-content>
+     </ion-card>
+
+     <ion-card>
+        <ion-card-header>
+          <ion-card-title style="color: #E9932B;">Emergence Loan</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+              <ion-grid>
+                <ion-row>
+                 <ion-col style="font-size: 10px;">
+                   Total Loan
+                 </ion-col>
+ 
+                 <ion-col style="text-align: right; color: #000000;font-size:12px">
+                  Tsh {{emergencyLoan?.totalLoan |number}}
+                </ion-col>
+               </ion-row>
+                 <hr>
+               <ion-row>
+                 <ion-col style="font-size: 10px;">
+                   Amount Paid
+                 </ion-col>
+ 
+                 <ion-col style="text-align: right; color: #000000;font-size:12px">
+                  Tsh {{emergencyLoan?.paid |number}}
+                </ion-col>
+               </ion-row>
+                  <hr>
+               <ion-row>
+                 <ion-col style="font-size: 10px;">
+                   OutStanding Loan
+                 </ion-col>
+ 
+                 <ion-col style="text-align: right; color: #000000;font-size:12px">
+                  Tsh {{emergencyLoan?.remainingLoan  < 0 ? 0 : emergencyLoan?.remainingLoan |number}}
+                </ion-col>
+               </ion-row>
+                   <hr>
+               <ion-row>
+                 <ion-col style="font-size: 10px;">
+                   Next Repayment Date
+                 </ion-col>
+ 
+                 <ion-col style="text-align: right; color: #000000;font-size:12px">
+                  {{emergencyLoan?.nextRepay | date}}
+                </ion-col>
+               </ion-row>
+               <hr>
+              </ion-grid>
+        </ion-card-content>
+      </ion-card>
+        <!-- <ion-fab slot="fixed" horizontal="end" vertical="bottom">
+          <ion-fab-button (click)="applyLoan()" ion-fab>
+            <ion-icon name="add-sharp"></ion-icon>
+          </ion-fab-button>
+        </ion-fab> -->
+</ion-content>

@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar color = "success">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label>Loan Report</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+         <ion-col>
+          <ion-label style="font-size: 12px;">Loan Category</ion-label>
+          <ion-select #loanTye="ngModel" required [(ngModel)] = "postData.loanType" name="loanType" style="color: #ffffff;" placeholder="All">
+            <ion-select-option value="1">Emergecy</ion-select-option>
+            <ion-select-option value="2">Normal</ion-select-option>
+            <ion-select-option value="3">All</ion-select-option>
+          </ion-select>
+          </ion-col> 
+
+          <ion-col style="align-items:center"> 
+            <ion-label style="font-size: 12px;" position="floating">From</ion-label>
+            <ion-input #startDate="ngModel" required [(ngModel)] = "postData.dateStart" class="form-control" style="float: right;  font-size: 11px; color: #000000;" name="startDate" type="date"></ion-input>
+          </ion-col>
+
+          <ion-col>
+            <ion-label style="font-size: 12px;" position="floating">To</ion-label>
+            <ion-input #endDate="ngModel" required [(ngModel)] = "postData.dateEnd" class="form-control" style="float: right;  font-size: 11px; color: #000000;" name="endDate" type="date"></ion-input>
+         </ion-col>
+     </ion-row>
+     <ion-row>
+          <ion-col> 
+            <ion-button (click)="loadData()" style="height: 50px; border-radius: 10px;" size="full">Apply Filter</ion-button>
+        </ion-col>
+     </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+      
+
+      <ion-card style="background-color: #ffffff;">
+        <ion-card-content>
+          <ion-card-header>
+              <ion-card-title style="background-color: #f6f6f6; padding: 10px 0 10px 0">
+                <h6 *ngIf="postData.loanType=='2'" style="text-align:center">Normal Loan Report From {{postData.dateStart | date}} To {{postData.dateEnd | date}}</h6>
+                <h6 *ngIf="postData.loanType=='1'" style="text-align:center">Emergecy Loan Report From {{postData.dateStart | date}} To {{postData.dateEnd| date}}</h6>
+                <h6 *ngIf="postData.loanType=='3'" style="text-align:center">All Loan Report From {{postData.dateStart | date}} To {{postData.dateEnd | date}}</h6>
+                <h6 *ngIf="postData.loanType==''" style="text-align:center">All Loan</h6>
+              </ion-card-title>
+          </ion-card-header>
+          <div *ngIf="!statuz">
+            <ion-grid *ngFor="let items of loanDetails" style="border-top: 5px solid #246985;">
+              <ion-row >
+               <ion-col>Date:</ion-col>
+               <ion-col style="text-align: right; color: #000000; font-weight: bold">{{items.submitedDate | date}}</ion-col>
+             </ion-row>
+           <ion-row >
+               <ion-col>Loan Type:</ion-col>
+               <ion-col style="text-align: right; color: #000000; font-weight: bold">{{items.loanType==1 ? 'Emergecy Loan' : 'Normal Loan'}}</ion-col>
+           </ion-row>
+           <ion-row >
+               <ion-col>Loan Amount:</ion-col>
+               <ion-col style="text-align: right; color: #000000; font-weight: bold">Tsh.{{items.loanAmount | number}}</ion-col>
+           </ion-row>
+           <ion-row >
+               <ion-col>Interest:</ion-col>
+               <ion-col style="text-align: right; color: #000000; font-weight: bold">Tsh.{{items.interest | number}}</ion-col>
+           </ion-row>
+           <ion-row >
+               <ion-col>Repaid:</ion-col>
+               <ion-col style="text-align: right; color: #000000; font-weight: bold">Tsh.{{items.paid | number}}</ion-col>
+           </ion-row>
+           <ion-row >
+               <ion-col>Loan Balance:</ion-col>
+               <ion-col style="text-align: right; color: #000000; font-weight: bold">Tsh.{{items.loanAmount - items.paid < 0 ? 0 : items.loanAmount - items.paid | number}}</ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+          <ion-grid *ngIf="statuz">
+            <ion-row>
+              <ion-col><h2>No Data</h2></ion-col>
+           </ion-row>
+          </ion-grid>
+        </ion-card-content>
+        </ion-card>
+      </ion-content>

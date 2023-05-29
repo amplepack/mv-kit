@@ -1,0 +1,8 @@
+{
+  "name": "saccos-app",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,321 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title>Detailed Loan Form</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()"><ion-icon name="close-sharp"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngFor="let items of formData">
+      <ion-card>
+      <ion-card-header>
+          TAARIFA ZA MWOMBAJI - Tarehe {{items.submitedDate | date}}
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+           <ion-row>
+            <ion-col>
+              Jina:
+            </ion-col>
+            <ion-col>
+                {{items.firstName}} {{items.lastName}}
+            </ion-col>
+           </ion-row>
+           <ion-row>
+            <ion-col>
+              Simu: 
+            </ion-col>
+            <ion-col>
+              {{items.phoneNo}}
+            </ion-col>
+           </ion-row>
+
+           <ion-row>
+            <ion-col>
+              Eneo Analoishi:
+            </ion-col>
+            <ion-col>
+             {{items.physicalAddress}}
+            </ion-col>
+           </ion-row>
+        </ion-grid>
+      </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+      <ion-card-header>
+      TAARIFA ZA MWENZA
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+           <ion-col>
+             Jina:
+           </ion-col>
+           <ion-col>
+            {{items.mateName}}
+           </ion-col>
+          </ion-row>
+          <ion-row>
+           <ion-col>
+             Simu:
+           </ion-col>
+           <ion-col>
+             {{items.matePhone}}
+           </ion-col>
+          </ion-row>
+          <ion-row>
+           <ion-col>
+             Eneo Analoishi:
+           </ion-col>
+           <ion-col>
+              {{items.mateLocation}}
+           </ion-col>
+          </ion-row>
+       </ion-grid>
+      </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+      <ion-card-header>
+      TAARIFA ZA AJIRA/BIASHARA
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+           <ion-col>
+             Jina la mwajili/Kampuni:
+           </ion-col>
+           <ion-col>
+             {{items.employer}}
+           </ion-col>
+          </ion-row>
+
+          <ion-row>
+           <ion-col>
+             Aina ya Kazi/Biashara:
+           </ion-col>
+           <ion-col>
+             {{items.ocupationType}}
+           </ion-col>
+          </ion-row>
+          <ion-row>
+           <ion-col>
+             Mahali Ofisi/Biashara ilipo:
+           </ion-col>
+           <ion-col>
+             {{items.officeLocation}}
+           </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Muda wa kazi au biashara:
+            </ion-col>
+            <ion-col>
+              {{items.startTime}}
+            </ion-col>
+           </ion-row>
+           <ion-row>
+            <ion-col>
+              Wadhifa Wako:
+            </ion-col>
+            <ion-col>
+              {{items.jobTitle}}
+            </ion-col>
+           </ion-row>
+       </ion-grid>
+      </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+      <ion-card-header>
+      TAARIFA ZA KIBENK
+      </ion-card-header>
+      <ion-card-content>
+   <ion-grid>
+    <ion-row>
+      <ion-col>
+         Jina la Bank
+      </ion-col>
+      <ion-col>
+        {{items.bankName}}
+     </ion-col>
+   </ion-row>
+
+   <ion-row>
+     <ion-col>
+        Tawi la Bank
+     </ion-col>
+     <ion-col>
+        {{items.branchName}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+   <ion-col>
+      Akaunti Namba:
+   </ion-col>
+   <ion-col>
+    {{items.accNumber}}
+  </ion-col>
+</ion-row>
+<ion-row>
+ <ion-col>
+    Jina la Akaunt:
+ </ion-col>
+ <ion-col>
+  {{items.accountName}}
+</ion-col>
+</ion-row>
+   </ion-grid>
+      </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+      <ion-card-header>
+      TAARIFA ZA MKOPO
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+               Kiasi Anachoomba:
+            </ion-col>
+            <ion-col>
+                {{items.loanAmount | number}}
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+              Muda wa kulipa:
+           </ion-col>
+           <ion-col>
+            {{items.timeFrame}} months
+          </ion-col>
+        </ion-row>
+        <ion-row>
+         <ion-col>
+            Aina ya mkopo:
+         </ion-col>
+         <ion-col>
+          {{items.loanType == 1 ? 'Emergence' : 'Normal'}}
+           </ion-col>
+           </ion-row>
+         </ion-grid>
+      </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+      <ion-card-header>
+      TAARIFA ZA WADHAMINI
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+               Mdhamini 1
+            </ion-col>
+            <ion-col>
+               {{items.garantersName1}}
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col>
+              Simu:
+           </ion-col>
+           <ion-col>
+              {{items.garantersPhone1}}
+          </ion-col>
+        </ion-row>
+      
+        <ion-row>
+         <ion-col>
+            Mdhamini 2:
+         </ion-col>
+         <ion-col>
+          {{items.garantersName2}}
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+       <ion-col>
+          Simu:
+       </ion-col>
+      
+       <ion-col>
+        {{items.garantersPhone2}}
+      </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+           Mdhamini 3:
+        </ion-col>
+        <ion-col>
+          {{items.garantersName3}}
+       </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+           Simu:
+        </ion-col>
+        <ion-col>
+          {{items.garantersPhone3}}
+       </ion-col>
+       </ion-row>
+         </ion-grid>
+      </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+      <ion-card-header>
+      TAARIFA ZA MADENI/MIKOPO KATIKA ASASI NYINGINE ZA KIFEDHA
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-grid>
+           <ion-row>
+               <ion-col>
+                  Mkopeshaji
+               </ion-col>
+               <ion-col>
+                    {{items.loanProvider}}
+               </ion-col>
+           </ion-row>
+
+           <ion-row>
+            <ion-col>
+               Kiwango Alichokopa:
+            </ion-col>
+            <ion-col>
+             {{items.debitAmount}}
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+             Mwisho wa rejesho:
+          </ion-col>
+          <ion-col>
+           {{items.deadline}}
+          </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+           Rejesho kwa mwezi:
+        </ion-col>
+        <ion-col>
+         {{items.returtAmount}}
+        </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+         Deni analodaiwa:
+      </ion-col>
+      <ion-col>
+       {{items.remainingLoan}}
+      </ion-col>
+  </ion-row>
+        </ion-grid>
+      </ion-card-content>
+      </ion-card>
+</ion-content>

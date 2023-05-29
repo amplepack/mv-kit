@@ -1,0 +1,174 @@
+
+<ion-header>
+  <ion-toolbar color = "success">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <!-- <ion-buttons slot="primary">
+      <ion-button color="light" (click)="openPopList($event)">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+
+    <ion-buttons slot="primary">
+      <ion-button color="light">
+          V 1.2
+      </ion-button>
+     </ion-buttons>
+    <ion-title>Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+     <ion-card>
+        <!-- <ion-item-divider>
+
+      </ion-item-divider> -->
+       <ion-card-content>
+          <ion-list scroll="false" style="margin: 10px;" color = "success">
+              <ion-item>
+                  <ion-avatar slot="start">
+                    <img src="../../../assets/img/user.png" alt="">
+                  </ion-avatar>
+                  <ion-label>
+                    <h3 style="color: #e9932b;">{{displayData?.firstName}} {{displayData?.lastName}}</h3>
+                    <h4>{{displayData?.Email}}</h4>
+                  </ion-label>
+                </ion-item>
+
+                <ion-item style="border: 1px solid #f1f1f1;">
+                     <ion-grid>
+                       <ion-row>
+                         <ion-col style="font-size: 12px;">% of Shares</ion-col>
+                         <ion-col style="text-align: right; color: #000000; font-size: 11px; font-weight: 300;">{{sharePercentage}}%</ion-col>
+                       </ion-row>
+
+                       <ion-row>
+                          <ion-col style="font-size: 12px;">Balance</ion-col>
+                          <ion-col style="text-align: right;color: #000000; font-size: 11px; font-weight: 300;">Tsh {{memberShares}}</ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                            <ion-col style="font-size: 12px;">Saccos Balance</ion-col>
+                            <ion-col style="text-align: right;color: #000000; font-size: 11px; font-weight: 300;">Tsh {{saccosShare}}</ion-col>
+                          </ion-row>
+                     </ion-grid>
+                </ion-item>
+           </ion-list>
+       </ion-card-content>
+     </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title style="color: #e9932b;">
+          List Of Members
+        </ion-card-title>
+      </ion-card-header>
+   
+      <ion-card-content>
+          <ion-card-content>
+              <ion-grid>
+                <ion-row>
+                 <ion-col style="font-size: 10px; font-weight: bold; max-width: 10%; font-weight: bold;">
+                  #
+                 </ion-col>
+ 
+                 <ion-col style="text-align: left; font-weight: bold; color: #000000;font-size:14px">
+                  Name
+                </ion-col>
+
+                <ion-col style="text-align: right; font-weight: bold; color: #000000;font-size:14px">
+                    Shares Amount
+                  </ion-col>
+               </ion-row>
+                 <hr>
+
+                      <ion-row *ngFor="let items of memberList, index as i">
+                          <ion-col style="font-size: 10px; max-width: 10%; font-weight: bold;">
+                           {{i+1}}
+                          </ion-col>
+          
+                          <ion-col style="text-align: left; color: #000000;font-size:12px">
+                            {{items.firstName}} {{items.lastName}} 
+                        </ion-col>
+         
+                         <ion-col style="text-align: right; color: #000000;font-size:12px">
+                             Tsh {{items.Share |number}}
+                           </ion-col>
+                           <hr>
+                        </ion-row>
+
+              </ion-grid>
+              <p style="text-align: center;color:#063f66d5" (click)="createExcel()">Download List of Members</p>
+        </ion-card-content>
+      </ion-card-content>
+    </ion-card>
+
+     <ion-card *ngIf="showQuickAction">
+       <ion-card-header>
+         <ion-card-title style="color: #e9932b;">Admin Actions</ion-card-title>
+         <hr>
+       </ion-card-header>
+       <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col style="text-align: center; border: 1px solid #e9932b; width: 75px; height: 75px; border-radius: 8px;" (click) = "loanRepayApprove()" class="ion-col">
+                  <img style="width: 30px; height: 30px;" src="../../../assets/img/deposit.png" alt=""><br>
+                  <label for="" style="font-size: 12px;">Loan Deposits</label>
+              <!-- <div>
+                <ion-card class="grid-cards">
+                  <ion-card-header>
+                    <ion-card-subtitle>
+                      Deposit
+                    </ion-card-subtitle>
+                  </ion-card-header>
+                </ion-card>
+              </div> -->
+            </ion-col>
+            <ion-col style="text-align: center; border: 1px solid #e9932b; margin-left: 20px; width: 75px; height: 75px; border-radius: 8px;" (click) = "Register()" class="ion-col">
+                  <img style="width: 30px; height: 30px;" src="../../../assets/img/new_user.png" alt=""><br>
+                  <label for="" style="font-size: 12px;">Register</label>
+              <!-- <div>
+                <ion-card class="grid-cards">
+                  <ion-card-header>
+                    <ion-card-subtitle>
+                      Deposit
+                    </ion-card-subtitle>
+                  </ion-card-header>
+                </ion-card>
+              </div> -->
+            </ion-col>
+              <ion-col button style="text-align: center; border: 1px solid #e9932b; margin-left: 20px; width: 50%; height: 75px; border-radius: 8px;" (click) = "approveDeposite()">
+                      <img style="width: 30px; height: 30px;" src="../../../assets/img/withdraw.webp" alt=""><br>
+                      <label for="" style="font-size: 12px;">Fees Deposit</label>
+                    </ion-col>
+
+                <ion-col style="text-align: center; margin-left: 20px; border: 1px solid #e9932b; width: 30%; height: 75px; border-radius: 8px;"  (click) = "loanVotes()">
+                  <img style="width: 30px; height: 30px;" src="../../../assets/img/withdraw.webp" alt=""><br>
+                  <label for="" style="font-size: 12px;">Votes</label>
+            </ion-col>
+
+              </ion-row>
+              <ion-row style="margin-top: 20px;">
+                <ion-col style="text-align: center; border: 1px solid #e9932b; width: 30%; height: 75px; border-radius: 8px;">
+                </ion-col>
+
+                <ion-col style="text-align: center; border: 1px solid #e9932b; margin-left: 20px; width: 30%; height: 75px; border-radius: 8px;">
+
+                </ion-col>
+
+                <ion-col style="text-align: center; border: 1px solid #e9932b; margin-left: 20px; width: 30%; height: 75px; border-radius: 8px;">
+
+                </ion-col>
+
+                <ion-col style="text-align: center; border: 1px solid #e9932b; margin-left: 20px; width: 30%; height: 75px; border-radius: 8px;">
+
+                </ion-col>
+          </ion-row>
+        </ion-grid>
+       </ion-card-content>
+     </ion-card>
+</ion-content>

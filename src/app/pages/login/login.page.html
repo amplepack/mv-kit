@@ -1,0 +1,32 @@
+<ion-content >
+        <div style="padding: 30% 10% 30% 10%;">
+             <h1 style="font-family: lato; font-weight: 700; text-align: center; color: #e9932b;">MV - Kit</h1>
+           <br>
+               <div class="form-group">
+                  <input autocomplete="off" required style="height: 50px;" #username = "ngModel" [class.is-invalid] = "username.invalid && username.touched" class="form-control" type="email" [(ngModel)] = "postData.username" name = "username"  placeholder="username" id="">
+                    <small [class.d-none] = "username.valid || username.untouched" class="text-danger">Username is required</small>
+                </div>
+                 <br>
+
+               <div class="form-group">  
+                 <input autocomplete="off" #password = "ngModel" required [class.is-invalid] = "password.invalid && password.touched" style="height: 50px;" class="form-control" type="password" [(ngModel)] = "postData.password" name="password" placeholder="Passowrd" id="">
+                 <small [class.d-none] = "password.valid || password.untouched" class="text-danger">Passowrd is required</small>
+                </div> 
+               <!-- <div class="form-group"> 
+                  <select style="height: 50px;" required [class.is-invalid] = "role.invalid && role.touched" #role = "ngModel" class="form-control" [(ngModel)] = "postData.role" name="role" id="">
+                      <option value="">Select Role</option>
+                      <option *ngFor = "let role of userRole" value="{{role.id}}">{{role.roleName}}</option>
+                  </select>
+                  <small [class.d-none] = "role.valid || role.untouched" class="text-danger">Role is required</small>
+          </div> -->
+          <br>
+
+          <p style="color: #ffffff; font-size: 12px; float: right; font-family: lato; font-weight: 300;">Forget Passowrd ?</p><br>
+
+          <hr style="background-color: #ffffff; border: 1px solid #ffffff">
+
+        <section>
+          <ion-button (click) = "loginAction()" [disabled] = "username.invalid || password.invalid" color="primary" expand="block" style="margin-top: 10%; height: 50px;">LOGIN</ion-button>
+        </section>
+            </div>
+</ion-content>

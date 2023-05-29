@@ -1,0 +1,67 @@
+<ion-header>
+    <ion-toolbar color = "success">
+      <ion-buttons slot="start">
+        <ion-back-button title=""></ion-back-button>
+      </ion-buttons>
+      <ion-title>loan-repayment</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <ion-card>
+      <ion-card-header>
+        <ion-card-title class = "" color="success">Fill With Correct Informations</ion-card-title>
+      </ion-card-header>
+      <ion-card-content style = "border-top: 1px solid required #c1c1c1;">
+        <form required #postForm = "ngForm">
+        <ion-list>
+            <ion-item *ngIf="showMember">
+              <ion-select required #memberId = "ngModel" [class.is-invalid] = "memberId.invalid" [(ngModel)] = "postData.memberId" name="memberId" placeholder="Select Member">
+              <ion-select-option *ngFor="let items of memberList" value="{{items.Id}}">{{items.firstName}} {{items.lastName}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Amount</ion-label>
+              <ion-input required #feeAmount = "ngModel" [class.is-invalid] = "feeAmount.invalid && feeAmount.touched" [(ngModel)] = "postData.feeAmount" name="feeAmount" type = "number" min = 1></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Payment Date</ion-label>
+                <ion-input required #paymentDate = "ngModel" [class.is-invalid] = "paymentDate.invalid" [(ngModel)] = "postData.paymentDate" name="paymentDate" style="margin-top: 20px;" type = "date" value = ""></ion-input>
+                <small [class.d-none] = "paymentDate.valid || paymentDate.untouched" class="text-danger">First Name is Required</small>
+              </ion-item>
+
+              <ion-item>
+                  <ion-select required #loanType = "ngModel" [class.is-invalid] = "loanType.invalid" [(ngModel)] = "postData.loanType" name="loanType" placeholder="Loan Options">
+                    <ion-select-option value="1">Emergency</ion-select-option>
+                    <ion-select-option value="2">Normal Loan</ion-select-option>
+                  </ion-select>
+                  <small [class.d-none] = "loanType.valid || loanType.untouched" class="text-danger">First Name is Required</small>
+                </ion-item>
+
+                <ion-item>
+                  <ion-select required #acountName = "ngModel" [class.is-invalid] = "acountName.invalid" [(ngModel)] = "postData.acountName" name="acountName" placeholder="Account">
+                    <ion-select-option *ngFor="let items of accountType" value="{{items.Id}}">{{items.Name}}</ion-select-option>
+                  </ion-select>
+                  </ion-item>
+
+            </ion-list>
+          </form>
+      </ion-card-content>
+    </ion-card>
+      <ion-grid>
+        <ion-row>
+            <ion-col>
+                <section>
+                    <ion-button expand="block" (click)="concelBtn()" type="reset" style="height: 50px" color = "danger">Cancel</ion-button>
+                  </section>
+            </ion-col>
+            <ion-col>
+                <section>
+                    <ion-button [disabled]="postForm.form.invalid" expand="block" style="height: 50px;" (click) = "saveData()" color = "success">SAVE</ion-button>
+                  </section>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+</ion-content>

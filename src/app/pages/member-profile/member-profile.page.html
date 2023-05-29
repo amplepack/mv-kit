@@ -1,0 +1,148 @@
+<ion-header>
+    <ion-toolbar color = "success">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+        <ion-title>Membership Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+   <ion-card>
+     <ion-card-header>
+       <ion-title style="color: #e9932b;">
+         Profile Info 
+       </ion-title>
+     </ion-card-header>
+     <ion-card-content>
+        <ion-card-content>
+            <ion-grid>
+              <ion-row>
+               <ion-col style="font-size: 10px;">
+                Full Name
+               </ion-col>
+
+               <ion-col style="text-align: right; color: #000000;font-size:12px">
+                {{displayData?.firstName}} {{displayData?.secondName}} {{displayData?.lastName}}
+              </ion-col>
+             </ion-row>
+               <hr>
+             <ion-row>
+               <ion-col style="font-size: 10px;">
+                 Email Address
+               </ion-col>
+
+               <ion-col style="text-align: right; color: #000000;font-size:12px">
+                {{displayData?.Email}}
+              </ion-col>
+             </ion-row>
+                <hr>
+                <ion-row>
+                    <ion-col style="font-size: 10px;">
+                      Phone#
+                    </ion-col>
+    
+                    <ion-col style="text-align: right; color: #000000;font-size:12px">
+                      {{displayData?.phoneNo}}
+                   </ion-col>
+                  </ion-row>
+                     <hr>
+
+                     <ion-row>
+                        <ion-col style="font-size: 10px;">
+                          Physical Address
+                        </ion-col>
+        
+                        <ion-col style="text-align: right; color: #000000;font-size:12px">
+                            {{displayData?.physicalAddress}}
+                       </ion-col>
+                      </ion-row>
+                         <hr>
+
+                         <ion-row>
+                            <ion-col style="font-size: 10px;">
+                              Date Of Membership
+                            </ion-col>
+            
+                            <ion-col style="text-align: right; color: #000000;font-size:12px">
+                              {{displayData?.membershipDat}}
+                           </ion-col>
+                          </ion-row>
+                             <hr>
+            </ion-grid>
+            <button type="submit" id="open-modal" style = "background-color: #e9932b; width: 100%;height: 40px;" class="btn btn-secondary">Change Password</button>
+      </ion-card-content>
+     </ion-card-content>
+   </ion-card>
+   <ion-modal #modal trigger="open-modal" [enterAnimation]="enterAnimation" [leaveAnimation]="leaveAnimation">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar color = "success">
+          <ion-title>Change Password</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="modal.dismiss()"><ion-icon style="color:#ffffff" name="close"></ion-icon></ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+
+      <ion-card>
+        <ion-card-content style="margin: 2%;">
+          <input style="margin-bottom: 30px; height: 50px" class="form-control" autocomplete="off" [class.is-invalid]="oldPass.invalid && oldPass.touched" #oldPass="ngModel" name="oldPass" required [(ngModel)]="userData.oldPass" type="password" placeholder="Enter Old Password"/>
+          <small [class.d-none] = "oldPass.valid || oldPass.untouched" class="text-danger">Passowrd is required</small>
+
+          <input style="margin-bottom: 30px; height: 50px" class="form-control" autocomplete="off" [class.is-invalid]="newPass.invalid && newPass.touched" #newPass="ngModel" name="newPass" required [(ngModel)]="userData.newPass" type="password" placeholder="Enter New Password"/>
+          <small [class.d-none] = "newPass.valid || newPass.untouched" class="text-danger">Passowrd is required</small>
+
+          <input style="margin-bottom: 30px; height: 50px" class="form-control"  autocomplete="off" [class.is-invalid]="confirmPass.invalid && confirmPass.touched" #confirmPass="ngModel" name="confirmPass" required [(ngModel)]="userData.confirmPass" type="password" placeholder="Repeat Password"/>
+          <small [class.d-none] = "confirmPass.valid || confirmPass.untouched" class="text-danger">Passowrd is required</small>
+   
+          <br><ion-button slot="bottom" [disabled]="oldPass.invalid || newPass.invalid || confirmPass.invalid" (click)="changeUserPassword()" size="full">Submit</ion-button>
+        </ion-card-content>
+      </ion-card>
+
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>
+
+
+ <!-- <ion-list>
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-img src="https://i.pravatar.cc/300?u=b"></ion-img>
+            </ion-avatar>
+            <ion-label>
+              <h2>Connor Smith</h2>
+              <p>Sales Rep</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-img src="https://i.pravatar.cc/300?u=a"></ion-img>
+            </ion-avatar>
+            <ion-label>
+              <h2>Daniel Smith</h2>
+              <p>Product Designer</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-img src="https://i.pravatar.cc/300?u=d"></ion-img>
+            </ion-avatar>
+            <ion-label>
+              <h2>Greg Smith</h2>
+              <p>Director of Operations</p>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-avatar slot="start">
+              <ion-img src="https://i.pravatar.cc/300?u=e"></ion-img>
+            </ion-avatar>
+            <ion-label>
+              <h2>Zoey Smith</h2>
+              <p>CEO</p>
+            </ion-label>
+          </ion-item>
+        </ion-list> -->
+

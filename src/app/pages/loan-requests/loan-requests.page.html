@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color = "success">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>loan-requests</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+   <ion-card *ngFor="let items of formData">
+    <ion-card-header>
+      <ion-card-title>
+       {{items.firstName}} {{items.lastName}}
+       <ion-button type="submit" id="form-modal" fill="clear" style="float: right;" (click)="openModal(items.formId)">Open</ion-button>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <hr>
+      <ion-grid>
+        <ion-row>
+          <ion-col style="background-color: #f1f1f1;">
+            Submission Data
+          </ion-col>
+          <ion-col style="background-color: #f1f1f1;">
+            Loan Amount
+          </ion-col>
+          <ion-col style="background-color: #f1f1ff;">
+            Loan Category
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="color: #555; font-weight: 300;">
+            {{items.submitedDate | date }}
+          </ion-col>
+          <ion-col style="color: #ffaa00; font-weight: 500;">
+            Tsh.{{items.loanAmount | number}}
+          </ion-col>
+          <ion-col style="color: #555; font-weight: 300;">
+            {{items.loanType}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <hr>
+      <ion-grid>
+        <ion-row>
+            <ion-col>
+                    <ion-button (click) = "rejectLoan(items.formId)" style="height: 40px" color = "danger">Reject</ion-button>
+            </ion-col>
+            <ion-col>
+                    <ion-button  (click) = "acceptLoan(items.formId)" style="height: 40px; float: right;" color = "success">Approve</ion-button>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+        </ion-card-content>
+   </ion-card>
+   <ion-card *ngIf="showNoData">
+    <ion-card-content>
+         <h1>No data to Display...</h1>
+    </ion-card-content>
+   </ion-card>
+</ion-content>

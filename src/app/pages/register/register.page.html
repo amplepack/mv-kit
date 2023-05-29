@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar color = "success">
+    <ion-buttons slot="start">
+      <ion-back-button title=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>New User</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form #postForm = "ngForm">
+        <ion-card>
+      <ion-card-header>
+        <ion-card-title>Personal Info</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+          <!-- person info -->
+        <ion-list lines="full" class="ion-no-margin">
+          <ion-item>
+            <ion-label>First Name</ion-label>
+              <ion-input type = "text" #firstName = "ngModel" [class.is-invalid] = "postData.firstName.invalid && postData.firstName.touched"  required  [(ngModel)] = "postData.firstName" name = "firstName" placeholder=""></ion-input>
+            <small [class.d-none] = "firstName.valid || firstName.untouched" class="text-danger">First Name is Required</small>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Middle Name</ion-label>
+             <ion-input type = "text"  #secondName = "ngModel" [class.is-invalid] = "postData.secondName.invalid && postData.secondName.touched" required [(ngModel)] = "postData.secondName" name = "secondName" placeholder=""></ion-input>
+              <small [class.d-none] = "secondName.valid || secondName.untouched" class="text-danger">Middle Name is Required</small>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Last Name</ion-label>
+            <ion-input type = "text"  #lastName = "ngModel" [class.is-invalid] = "postData.lastName.invalid && postData.lastName.touched" required  [(ngModel)] = "postData.lastName" name = "lastName" placeholder=""></ion-input>
+            <small [class.d-none] = "lastName.valid || lastName.untouched" class="text-danger">Last Name is Required</small>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Date Of Birth</ion-label>
+            <ion-input type = "date" #dOb = "ngModel" max = "2022-12-31" [class.is-invalid] = "postData.dOb.invalid && postData.dOb.touched" required  [(ngModel)] = "postData.dOb" name = "dOb" placeholder=""></ion-input>
+            <small [class.d-none] = "dOb.valid || dOb.untouched" class="text-danger">dOb is Required</small>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Phone #</ion-label>
+            <ion-input type = "number" #phoneNo = "ngModel"  min = 0 [class.is-invalid] = "postData.phoneNo.invalid && postData.phoneNo.touched" required  [(ngModel)] = "postData.phoneNo" name = "phoneNo" placeholder=""></ion-input>
+            <small [class.d-none] = "phoneNo.valid || phoneNo.untouched" class="text-danger">dOb is Required</small>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Email Address</ion-label>
+            <ion-input type = "email" #email = "ngModel"  [class.is-invalid] = "postData.email.invalid && postData.email.touched" required  [(ngModel)] = "postData.email" name = "email" placeholder=""></ion-input>
+            <small [class.d-none] = "email.valid || email.untouched" class="text-danger">Email is Required</small>
+
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Physical Address</ion-label>
+            <ion-input type = "text"  #physicalAddress = "ngModel" [class.is-invalid] = "postData.physicalAddress.invalid && postData.physicalAddress.touched" required  [(ngModel)] = "postData.physicalAddress" name = "physicalAddress" placeholder=""></ion-input>
+            <small [class.d-none] = "physicalAddress.valid || physicalAddress.untouched" class="text-danger">Address is Required</small>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Job Title</ion-label>
+            <ion-input type = "text" #jobTitle = "ngModel" [class.is-invalid] = "postData.jobTitle.invalid && postData.jobTitle.touched" required  [(ngModel)] = "postData.jobTitle" name = "jobTitle" placeholder=""></ion-input>
+            <small [class.d-none] = "jobTitle.valid || jobTitle.untouched" class="text-danger">Job Title is Required</small>
+          </ion-item>
+        </ion-list>
+        <!-- person info end -->
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-list lines="full" class="ion-no-margin">
+          <ion-item>
+            <ion-label position="floating">MemberShip Date</ion-label>
+            <ion-input  type = "date" #membershipDate = "ngModel" [class.is-invalid] = "postData.membershipDate.invalid && postData.membershipDate.touched" required  [(ngModel)] = "postData.membershipDate" name = "membershipDate" placeholder="MemberShip Date"></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Login Info</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+        <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input #password = "ngModel" [class.is-invalid] = "postData.password.invalid && postData.password.touched" required  [(ngModel)] = "postData.password" name = "password" type = "Password"></ion-input>
+            <!-- <small [class.d-none] = "password.valid || password.untouched" class="text-danger">Password is Required</small> -->
+          </ion-item>
+        <ion-item>
+            <ion-label position="floating">Confirm Password</ion-label>
+            <ion-input #ConfirmPassword = "ngModel" [class.is-invalid] = "postData.ConfirmPassword.invalid && postData.ConfirmPassword.touched" required [(ngModel)] = "postData.ConfirmPassword" name = "ConfirmPassword" type = "Password"></ion-input>
+            <!-- <small [class.d-none] = "ConfirmPassword.valid || ConfirmPassword.untouched" class="text-danger">Confirm Password is Required</small> -->
+        </ion-item>
+        </ion-card-content>
+      </ion-card> 
+    </form>
+      <ion-button [disabled] = "postForm.form.invalid" (click) = "memberRegistration()" color="primary" expand="block" style="margin-top: 10%; margin-bottom: 10%; margin-right: 2%; margin-left: 2%; height: 50px;">REGISTER</ion-button>
+
+   </ion-content>

@@ -1,0 +1,226 @@
+<ion-header>
+  <ion-toolbar color = "success">
+    <ion-buttons slot="start">
+      <ion-menu-button title=""></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Direct Deposit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+          <ion-item>
+            <ion-select placeholder="Select Deposit Type">
+              <ion-select-option value="apples">Shares</ion-select-option>
+              <ion-select-option value="oranges">Savings</ion-select-option>
+              <ion-select-option value="bananas">Debit</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      <br>
+      <ion-input class="amount" placeholder="Enter Amount" min = 1 style="border-radius: 5px; border: 1px solid #9e9e9e;" type = "number"></ion-input>
+      <ion-grid>
+         <label style="font-weight: bold; font-size: medium;" for="">FROM</label>
+          <ion-row>
+              <ion-col class="ion-col">
+                <div>
+                  <ion-card [style.background] = "mnoColor" (click) = "ShowMno()" style="background: #f6f6f6;" class="grid-cards">
+                    <ion-card-header>
+                      <ion-card-subtitle>
+                        Telecom
+                      </ion-card-subtitle>
+                    </ion-card-header>
+                  </ion-card>
+                </div>
+              </ion-col>
+              <ion-col>
+                  <div>
+                      <ion-card [style.background] = "bankColor" (click) = "ShowBanks()" style="background: #f6f6f6;" class="grid-cards">
+                        <ion-card-header>
+                          <ion-card-subtitle>
+                              Banks
+                          </ion-card-subtitle>
+                        </ion-card-header>
+                      </ion-card>
+                    </div>
+                </ion-col>
+            </ion-row>
+      </ion-grid>
+
+      <!-- <ion-button size = "full"> Proceed </ion-button> -->
+      <!-- <button class="form-control btn btn-primary">Continue</button> -->
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-title></ion-title>
+    </ion-card-header>
+    <ion-card-content>
+        <ion-grid *ngIf = "showMno">
+          <ion-row>
+            <ion-col class="ion-col">
+              <ion-card>
+                <ion-card-content>
+                    <img style="width: 50px;" height="50px" src="../../../assets/img/mpesalogo.png" alt="M-pesa" sizes="50x50" srcset="">
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+
+            <ion-col class="ion-col">
+                <ion-card>
+                  <ion-card-content>
+                      <img style="width: 50px;" height="50px" src="../../../assets/img/tigopesa.png" alt="M-pesa" sizes="50x50" srcset="">
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+
+              <ion-col class="ion-col">
+                  <ion-card>
+                    <ion-card-content>
+                        <img style="width: 50px;" height="50px" src="../../../assets/img/airtelmonelogo.jpeg" alt="M-pesa" sizes="50x50" srcset="">
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+          </ion-row>
+
+          <ion-row>
+              <ion-col class="ion-col">
+                <ion-card>
+                  <ion-card-content>
+                      <img style="width: 50px;" height="50px" src="../../../assets/img/halopesa.png" alt="M-pesa" sizes="50x50" srcset="">
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+
+              <ion-col class="ion-col">
+                  <ion-card>
+                    <ion-card-content>
+                        <img style="width: 50px;" height="50px" src="../../../assets/img/tpesalogo.jpg" alt="M-pesa" sizes="50x50" srcset="">
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+
+                <ion-col class="ion-col">
+                    <ion-card>
+                      <ion-card-content>
+                          <img style="width: 50px;" height="50px" src="../../../assets/img/ezypesalogo.png" alt="M-pesa" sizes="50x50" srcset="">
+                      </ion-card-content>
+                    </ion-card>
+                  </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <ion-grid *ngIf="showBanks">
+            <ion-toolbar>
+                <ion-searchbar placeholder="search banks"></ion-searchbar>
+              </ion-toolbar>
+            <ion-row>
+              <ion-col class="ion-col">
+                <ion-card>
+                  <ion-card-content>
+                      <img style="width: 50px;" height="50px" src="../../../assets/img/crdb_logo.png" alt="M-pesa" sizes="50x50" srcset="">
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+
+              <ion-col class="ion-col">
+                  <ion-card>
+                    <ion-card-content>
+                        <img style="width: 50px;" height="50px" src="../../../assets/img/Nmb_logo.jpg" alt="M-pesa" sizes="50x50" srcset="">
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+
+                <ion-col class="ion-col">
+                    <ion-card>
+                      <ion-card-content>
+                          <img style="width: 50px;" height="50px" src="../../../assets/img/exim_logo.png" alt="M-pesa" sizes="50x50" srcset="">
+                      </ion-card-content>
+                    </ion-card>
+                  </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col class="ion-col">
+                  <ion-card>
+                    <ion-card-content>
+                        <img style="width: 50px;" height="50px" src="../../../assets/img/nbc_logo.png" alt="M-pesa" sizes="50x50" srcset="">
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+
+                <ion-col class="ion-col">
+                    <ion-card>
+                      <ion-card-content>
+                          <img style="width: 50px;" height="50px" src="../../../assets/img/kcb_logo.jpg" alt="M-pesa" sizes="50x50" srcset="">
+                      </ion-card-content>
+                    </ion-card>
+                  </ion-col>
+
+                  <ion-col class="ion-col">
+                      <ion-card>
+                        <ion-card-content>
+                            <img style="width: 50px;" height="50px" src="../../../assets/img/acb_logo.jpeg" alt="M-pesa" sizes="50x50" srcset="">
+                        </ion-card-content>
+                      </ion-card>
+                    </ion-col>
+              </ion-row>
+
+              <ion-row>
+                  <ion-col class="ion-col">
+                    <ion-card>
+                      <ion-card-content>
+                          <img style="width: 50px;" height="50px" src="../../../assets/img/crdb_logo.png" alt="M-pesa" sizes="50x50" srcset="">
+                      </ion-card-content>
+                    </ion-card>
+                  </ion-col>
+
+                  <ion-col class="ion-col">
+                      <ion-card>
+                        <ion-card-content>
+                            <img style="width: 50px;" height="50px" src="../../../assets/img/Nmb_logo.jpg" alt="M-pesa" sizes="50x50" srcset="">
+                        </ion-card-content>
+                      </ion-card>
+                    </ion-col>
+
+                    <ion-col class="ion-col">
+                        <ion-card>
+                          <ion-card-content>
+                              <img style="width: 50px;" height="50px" src="../../../assets/img/exim_logo.png" alt="M-pesa" sizes="50x50" srcset="">
+                          </ion-card-content>
+                        </ion-card>
+                      </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col class="ion-col">
+                      <ion-card>
+                        <ion-card-content>
+                            <img style="width: 50px;" height="50px" src="../../../assets/img/nbc_logo.png" alt="M-pesa" sizes="50x50" srcset="">
+                        </ion-card-content>
+                      </ion-card>
+                    </ion-col>
+
+                    <ion-col class="ion-col">
+                        <ion-card>
+                          <ion-card-content>
+                              <img style="width: 50px;" height="50px" src="../../../assets/img/kcb_logo.jpg" alt="M-pesa" sizes="50x50" srcset="">
+                          </ion-card-content>
+                        </ion-card>
+                      </ion-col>
+
+                      <ion-col class="ion-col">
+                          <ion-card>
+                            <ion-card-content>
+                                <img style="width: 50px;" height="50px" src="../../../assets/img/acb_logo.jpeg" alt="M-pesa" sizes="50x50" srcset="">
+                            </ion-card-content>
+                          </ion-card>
+                        </ion-col>
+                  </ion-row>
+          </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

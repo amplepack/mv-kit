@@ -1,0 +1,78 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-item color="success">
+        <ion-avatar slot="start">
+            <img src="../../../assets/img/user.png" alt="">
+          </ion-avatar>
+          <ion-note style="margin-top: 30px; color: #ffffff;">{{userInfo?.firstName | uppercase}} {{userInfo?.lastName | uppercase}}</ion-note>
+    </ion-item>
+      <ion-content>
+        <ion-list style="padding-top: 0px;  padding-bottom: 0px;" id="inbox-list">
+          <ion-menu-toggle auto-hide="false">
+            <div *ngFor="let p of appPages; let i = index">
+              <ion-item style="border-bottom: 1px solid #d3d3d3;" button routerDirection="root" [routerLink]="[p.url]" lines="none" detail="true" routerLinkActive="selected">
+                <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                <ion-label>{{ p.title }} <i *ngIf="p.facto == 1" style="color: #ff0000;"> ({{loanFormCount?.formRequests}})</i></ion-label>
+              </ion-item>
+            </div>
+          </ion-menu-toggle>
+
+          <ion-accordion-group style="border-bottom: 1px solid #d3d3d3;">
+            <ion-accordion>
+              <ion-item slot="header">Deposits</ion-item>
+              <div slot="content" *ngFor="let p of deposit; let i = index">
+                <ion-item button routerDirection="root" [routerLink]="[p.url]" lines="none" detail="true" routerLinkActive="selected">
+                  <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                  <ion-label>{{ p.title }}</ion-label>
+                </ion-item>
+              </div>
+           </ion-accordion>
+          </ion-accordion-group>
+
+          <ion-accordion-group style="border-bottom: 1px solid #d3d3d3;">
+            <ion-accordion>
+              <ion-icon slot="start" name="albums-outline"></ion-icon>
+              <ion-item slot="header">Loan</ion-item>
+              <div slot="content" *ngFor="let p of loan; let i = index">
+                <ion-item button routerDirection="root" [routerLink]="[p.url]" lines="none" detail="true" routerLinkActive="selected">
+                  <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                  <ion-label>{{ p.title }}</ion-label>
+                </ion-item>
+              </div>
+           </ion-accordion>
+          </ion-accordion-group>
+  
+          <ion-accordion-group style="border-bottom: 1px solid #d3d3d3;">
+            <ion-accordion>
+              <ion-icon slot="start" name="albums-outline"></ion-icon>
+              <ion-item slot="header">Shares Reports</ion-item>
+              <div slot="content" *ngFor="let p of sharesReports; let i = index">
+                <ion-item button routerDirection="root" [routerLink]="[p.url]" lines="none" detail="true" routerLinkActive="selected">
+                  <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                  <ion-label>{{ p.title }}</ion-label>
+                </ion-item>
+              </div>
+           </ion-accordion>
+          </ion-accordion-group>
+          
+          <ion-accordion-group style="border-bottom: 1px solid #d3d3d3;">
+            <ion-accordion>
+              <ion-item slot="header">Loan Reports</ion-item>
+              <div slot="content" *ngFor="let p of loanReports; let i = index">
+                <ion-item button routerDirection="root" [routerLink]="[p.url]" lines="none" detail="true" routerLinkActive="selected">
+                  <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+                  <ion-label>{{ p.title }}</ion-label>
+                </ion-item>
+              </div>
+           </ion-accordion>
+          </ion-accordion-group>
+        </ion-list>
+      </ion-content>
+      <ion-item color="success" button (click)="getLogout()">
+        <ion-icon slot="start" color="secondary" name="log-out"></ion-icon><ion-label>Logout</ion-label>
+       </ion-item>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

@@ -1,0 +1,249 @@
+<ion-header>
+    <ion-toolbar color = "success">
+      <ion-buttons slot="start">
+        <ion-menu-button title=""></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Loan Request</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+   <ion-card>
+      <ion-card-header>
+        <ion-card-title class = "eSACCO" color="success">TAARIFA ZA MWOMBAJI</ion-card-title>
+      </ion-card-header>
+      <ion-card-content style = "border-top: 1px solid #c1c1c1;">
+        <ion-list>
+          <ion-item>
+              <ion-label position="floating">Jina la mwombaji</ion-label>
+              <ion-input  type = "text" disabled="disabled" value = "{{userInfo?.firstName}} {{userInfo?.secondName}} {{userInfo?.lastName}}"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label position="floating">Simu:</ion-label>
+                <ion-input type = "text" disabled="disabled" value = "+255{{userInfo?.phoneNo}}"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                  <ion-label position="floating">Eneo analoishi:</ion-label>
+                  <ion-input type = "text" disabled="disabled" value = "{{userInfo?.physicalAddress}}"></ion-input>
+                </ion-item>
+
+            </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+          <ion-card-title class = "eSACCO" color="success">TAARIFA ZA MWENZA</ion-card-title>
+        </ion-card-header>
+        <ion-card-content style = "border-top: 1px solid #c1c1c1;">
+          <ion-list>
+            <ion-item>
+                <ion-label position="floating">Jina kamili la Mwenza</ion-label>
+                <ion-input #mateName = "ngModel" [(ngModel)] = "postData.mateName" name = "mateName"  type = "text"  value = ""></ion-input>
+              </ion-item>
+
+              <ion-item>
+                  <ion-label position="floating">Namba ya Simu:</ion-label>
+                  <ion-input #matePhone = "ngModel" [(ngModel)] = "postData.matePhone" name = "matePhone" type = "number" min = 0 value = ""></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label position="floating">Eneo analoishi:</ion-label>
+                    <ion-input #mateLocation = "ngModel" [(ngModel)] = "postData.mateLocation" name="mateLocation"  type = "text"  value = ""></ion-input>
+                  </ion-item>
+
+              </ion-list>
+        </ion-card-content>
+      </ion-card>
+
+       <ion-card>
+          <ion-card-header>
+            <ion-card-title class = "eSACCO" color="success">TAARIFA ZA AJIRA/BIASHARA</ion-card-title>
+          </ion-card-header>
+          <ion-card-content style = "border-top: 1px solid #c1c1c1;">
+            <ion-list>
+              <ion-item>
+                  <ion-label position="floating">Jina la Mwajiri/Kampuni</ion-label>
+                  <ion-input #employer = "ngModel" required [class.is-invalid] = "employer.valid" [(ngModel)] = "postData.employer" name="employer" type = "text"  value = ""></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label position="floating">Aina ya Kazi/Biashara</ion-label>
+                    <ion-input #ocupationType = "ngModel" required [class.is-invalid] = "ocupationType.valid" [(ngModel)] = "postData.ocupationType" name="ocupationType" type = "text"  value = ""></ion-input>
+                  </ion-item>
+
+                  <ion-item>
+                      <ion-label position="floating">Mahali Ofisi/Biashara Ilipo</ion-label>
+                      <ion-input #officeLocation = "ngModel" required [class.is-invalid] = "officeLocation.valid" [(ngModel)] = "postData.officeLocation"  type = "text" name="officeLocation" value = ""></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">Umefanyakazi/Biashara hapo toka lini</ion-label><br>
+                        <ion-input #startTime = "ngModel" required [class.is-invalid]= "startTime.valid" [(ngModel)] = "postData.startTime"  type = "date" name="startTime"  value = ""></ion-input>
+                      </ion-item>
+
+                      <ion-item>
+                          <ion-label position="floating">Wadhifa Wako</ion-label>
+                          <ion-input #jobTitle = "ngModel" required [class.is-invalid] = "jobTitle.valid" [(ngModel)] = "postData.jobTitle" name="jobTitle" type = "text"  value = ""></ion-input>
+                        </ion-item>
+
+                </ion-list>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+            <ion-card-header>
+              <ion-card-title class = "eSACCO" color="success">TAARIFA ZA KIBENKI</ion-card-title>
+            </ion-card-header>
+            <ion-card-content style = "border-top: 1px solid #c1c1c1;">
+              <ion-list>
+                <ion-item>
+                    <ion-label position="floating">Jina la Benki Ulikofungulia Akaunti</ion-label>
+                    <ion-input #bankName = "ngModel" required [class.is-invalid] = "bankName.valid" [(ngModel)] = "postData.bankName" name="bankName" type = "text"  value = ""></ion-input>
+                  </ion-item>
+
+                  <ion-item>
+                      <ion-label position="floating">Tawi la Benki</ion-label>
+                      <ion-input #branchName = "ngModel" required [class.is-invalid] = "branchName.valid" [(ngModel)] = "postData.branchName" name="branchName" type = "text"  value = ""></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">Nambari ya Akaunti ya Benki</ion-label>
+                        <ion-input #accNumber = "ngModel" required [class.is-invalid] = "accNumber" [(ngModel)] = "postData.accNumber"  type = "text"  value = ""></ion-input>
+                      </ion-item>
+
+                      <ion-item>
+                          <ion-label position="floating">Jina la Akaunti</ion-label>
+                          <ion-input #accountName = "ngModel" required [class.is-invalid] = "accountName.valid" [(ngModel)] = "postData.accountName" name="accountName" type = "text"  value = ""></ion-input>
+                        </ion-item>
+
+                  </ion-list>
+            </ion-card-content>
+          </ion-card> 
+
+           <ion-card>
+              <ion-card-header>
+                <ion-card-title class = "" color="success">MAOMBI YA MKOPO</ion-card-title>
+              </ion-card-header>
+              <ion-card-content style = "border-top: 1px solid #c1c1c1;">
+                <ion-list>
+                  <ion-item>
+                      <ion-label position="floating">Kiasi cha Mkopo</ion-label>
+                      <ion-input #loanAmount = "ngModel" required [class.is-invalid] = "loanAmount.valid" [(ngModel)] = "postData.loanAmount" name="loanAmount" type = "number" mini=1 value = ""></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">Muda wa kulipa mkopo</ion-label>
+                        <ion-input #timeFrame = "ngModel" required [class.is-invalid] = "timeFrame.valid" [(ngModel)] = "postData.timeFrame" name="timeFrame" type = "number" min = 1  value = ""></ion-input>
+                      </ion-item>
+
+                      <ion-item>
+                          <ion-select #loanType = "ngModel" required [class.is-invalid] = "loanType.valid" [(ngModel)] = "postData.loanType" name="loanType" placeholder="Aina ya mkopo">
+                            <ion-select-option value="1">Dharura</ion-select-option>
+                            <ion-select-option value="2">Mkopo wa Maendeleo ya jamii/Kawaida</ion-select-option>
+                          </ion-select>
+                        </ion-item> 
+
+                        <!-- <ion-item>
+                            <ion-label position="floating">Jina la Akaunti</ion-label>
+                            <ion-input #accName = "ngModel" required [class.is-invalid] = "accName.valid" [(ngModel)] = "postData.accName" name="accName" type = "text"  value = ""></ion-input>
+                          </ion-item> -->
+
+                    </ion-list>
+              </ion-card-content>
+            </ion-card> 
+
+      <ion-card>
+            <ion-card-header>
+              <ion-card-title class = "" color="success">TAARIFA YA WADHAMINI</ion-card-title>
+            </ion-card-header>
+            <ion-card-content style = "border-top: 1px solid #c1c1c1;">
+              <ion-list>
+                <ion-item>
+                  <ion-label position="floating">Jina la Mdhamini wa 1</ion-label>
+                  <ion-input #garantersName1 = "ngModel" required [class.is-invalid] = "garantersName1.valid" [(ngModel)] = "postData.garantersName1" name="garantersName1" type = "text"  value = ""></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Simu ya Mdhamini wa 1</ion-label>
+                  <ion-input #garantersPhone1 = "ngModel" required [class.is-invalid] = "garantersPhone1.valid" [(ngModel)] = "postData.garantersPhone1" name="garantersPhone1" type = "number" min=0  value = ""></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Jina la Mdhamini wa 2</ion-label>
+                  <ion-input #garantersName2 = "ngModel" required [class.is-invalid] = "garantersName2.valid" [(ngModel)] = "postData.garantersName2" name="garantersName2" type = "text"  value = ""></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Simu ya Mdhamini wa 2</ion-label>
+                  <ion-input #garantersPhone2 = "ngModel" required [class.is-invalid] = "garantersPhone2.valid" [(ngModel)] = "postData.garantersPhone2" name="garantersPhone2" type = "number" min=0  value = ""></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Jina la Mdhamini wa 3</ion-label>
+                  <ion-input #garantersName3 = "ngModel" required [class.is-invalid] = "garantersName3.valid" [(ngModel)] = "postData.garantersName3" name="garantersName3" type = "text"  value = ""></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Simu ya Mdhamini wa 3</ion-label>
+                  <ion-input #garantersPhone3 = "ngModel" required [class.is-invalid] = "garantersPhone3.valid" [(ngModel)] = "postData.garantersPhone3" name="garantersPhone3" type = "number" min=0  value = ""></ion-input>
+                </ion-item>
+
+                  </ion-list>
+            </ion-card-content>
+          </ion-card>
+
+
+            <ion-item style="padding-top: 10px; color: #85c24b; padding-bottom: 10px; margin: 10px;"><br>
+              <ion-checkbox color="secondary" (ionChange)="onCheck($event)" name="confirmBtb" slot="start"></ion-checkbox>
+              <ion-text>Je? Una Mkopo Katika Asasi za Kibenki</ion-text>
+         <br> </ion-item><br>
+
+
+
+          <ion-card *ngIf="showImputs">
+              <ion-card-header>
+                  <ion-card-title class = "" color="success">TAARIFA ZA MADENI/MIKOPO ULIYONAYO KATIKA ASASI NYINGINE ZA FEDHA</ion-card-title>
+                </ion-card-header>
+              <ion-card-content style = "border-top: 1px solid #c1c1c1;">
+                <ion-list>
+
+                  <ion-item>
+                      <ion-label position="floating">Jina la Mkopeshaji</ion-label>
+                      <ion-input #loanProvider = "ngModel" required [class.is-invalid] = "loanProvider.valid" [(ngModel)] = "postData.loanProvider" name="loanProvider" type = "text"  value = ""></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label position="floating">Kiwango Ulichokopa</ion-label>
+                        <ion-input #debitAmount = "ngModel" required [class.is-invalid] = "debitAmount.valid" [(ngModel)] = "postData.debitAmount" name="debitAmount" type = "number" min = 1 value = ""></ion-input>
+                      </ion-item>
+
+                      <ion-item>
+                          <ion-label position="floating">Tarehe ya mwisho ya marejesho</ion-label><br>
+                          <ion-input #deadline = "ngModel" required [class.is-invalid] = "deadline.valid" [(ngModel)] = "postData.deadline" name="deadline" type = "date" value = ""></ion-input>
+                        </ion-item>
+
+                      <ion-item>
+                          <ion-label position="floating">Rejesho Kwa Mwezi</ion-label>
+                          <ion-input #returtAmount = "ngModel" required [class.is-invalid] = "returtAmount.valid" [(ngModel)] = "postData.returtAmount" name="returtAmount" type = "number"  value = ""></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label position="floating">Kiasi Cha Deni Kilichosalia Unachodaiwa</ion-label>
+                            <ion-input #remainingLoan = "ngModel" required [class.is-invalid] = "remainingLoan.valid" [(ngModel)] = "postData.remainingLoan" name="remainingLoan" type = "number" min = 1 value = ""></ion-input>
+                          </ion-item>
+
+                    </ion-list>
+              </ion-card-content>
+            </ion-card>
+
+            <ion-item style="margin: 10px;"><p></p>
+                <ion-checkbox color="secondary" (ionChange)="isDeclared($event)" name="confirmBtb" slot="start"></ion-checkbox>
+                <ion-text style="padding-top: 20px; color: red; padding-bottom: 20px;">Nathibitisha kwamba taarifa nilizotoa hapo juu nikamili na sahihi kwakadri ya ufahamu wangu</ion-text>
+           <br> </ion-item><br>
+    <section>
+        <button (click) = "submitLoanForm()" bind-disabled="checkd" style="width: 96%; margin-bottom: 10px; margin-left: 2%; margin-right: 2%; margin-top: 10%; background-color: #e9932b; height: 50px;"  size = "full" class="btn btn-primary" type="submit">SUBMIT</button>         
+      </section>
+</ion-content>
